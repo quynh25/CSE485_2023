@@ -42,12 +42,33 @@
         </nav>
 
     </header>
-    <main class="container mt-5 mb-5">
+
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $conn = new mysqli($servername, $username, $password,'btth01_cse485');
+
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+        // echo "Connected successfully";
+    // //Bước 2: Thực thi câu lệnh truy vấn
+    // $sql = "select * from posts order by dop asc limit 5";
+        $sql = "select * from theloai";
+        // $result = mysqli_query($conn, $sql);
+        $result = $conn->query($sql);
+        
+    ?>
+
+    <main class="container mt-5 mb-5", style="background-color: antiquewhite">
+        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
                 <a href="add_category.php" class="btn btn-success">Thêm mới</a>
                 <table class="table">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên thể loại</th>
@@ -56,26 +77,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Nhạc trữ tình</td>
-                            <td>
-                                <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Nhạc cách mạng</td>
-                            <td>
-                                <a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                    <?php
+                        while($row = $result->fetch_assoc()){?>
+                            <tr>
+                                <td><?php echo $row['ma_tloai']?></td>
+                                <td><?php echo $row['ten_tloai']?></td>
+                                <td>
+                                    <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </td>
+                                <td>
+                                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                        
                     </tbody>
                 </table>
