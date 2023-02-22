@@ -58,20 +58,42 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Nhacvietplus</td>
-                            <td>
-                                <img id="img-avt" src="https://nhacvietplus.com.vn/wp-content/uploads/2020/12/logo.png" alt="" style="width:25%">
-                            </td>
-                            <td>
-                                <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                       
+                    <?php
+                        $host="localhost";
+                        $username="root";
+                        $password="123";
+                        $database="btth01_cse485";
+                        $conn=mysqli_connect($host,$username,$password,$database);
+                        mysqli_query($conn,"SET NAMES 'utf8'");
+                        if (mysqli_connect_error()){
+                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                        }
+                        else{
+                            echo "Success to connect to MySQL"; }
+                        $sql = "SELECT * FROM tacgia";
+                        $result = mysqli_query($conn,$sql);
+
+                        if(mysqli_num_rows($result)>0){
+                            while($row = mysqli_fetch_assoc($result)){
+                    ?>
+                                <tr>
+                                    <th scope="row"><?php echo $row['ma_tgia']?></th>
+                                    <td><?php echo $row['ten_tgia']?></td>
+                                    <td>
+                                        <img id="img-avt" src="<?php echo $row['hinh_tgia']?>" alt="" style="width:10%">
+                                    </td>
+                                    <td>
+                                        <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href=""><i onclick="remove_tgia() class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                    <?php
+                            }
+                        }
+                    ?>
+                        
                     </tbody>
                 </table>
             </div>
