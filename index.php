@@ -86,7 +86,7 @@
                          <img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="...">
                          <div class="card-body">
                               <h5 class="card-title">
-                                   <a href="#" class="text-decoration-none">
+                                   <a href="detail.php" class="text-decoration-none">
                                         <?php echo $row['ten_bhat'];?>
                                    </a>
                               </h5>
