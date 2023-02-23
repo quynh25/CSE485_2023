@@ -54,24 +54,28 @@
         }
         $sql_them = "SELECT * FROM baiviet";
         $result = $conn->query($sql_them);
+
+        $sql_tgia = "select * from tacgia";
+        $result_tgia = $conn->query($sql_tgia);
+        $sql_tloai = "select * from theloai";
+        $result_tloai = $conn->query($sql_tloai);
         // $result = $conn->query($sql);
         
         if(isset($_POST['sbm'])){
-            $id_bviet = $POST['id_bviet'];
-            $title = $POST['title'];
-            $prd_name = $POST['prd_name'];
-            $id_tloai = $POST['id_tloai'];
-            $description = $POST['description'];
-            $content = $POST['content'];
-            $id_tgia = $POST['id_tgia'];
-            $date = $POST['date'];
-            $image = $FILE['image']['name'];
-            $image_tmp = $FILE['image']['tmp_name'];
+            $ma_bviet = $POST['ma_bviet'];
+            $tieude = $POST['tieude'];
+            $ten_bhat = $POST['ten_bhat'];
+            $ma_tloai = $POST['ma_tloai'];
+            $tomtat = $POST['tomtat'];
+            $noidung = $POST['noidung'];
+            $ma_tgia = $POST['ma_tgia'];
+            $ngayviet = $POST['ngayviet'];
+            $hinhanh = $FILE['hinhanh']['ten_tgia'];
+            $hinhanh_tmp = $FILE['hinhanh']['ten_tgia'];
 
-            $sql = "iINSERT INTO baiviet (id_bviet, title, prd_name, id_tloai, description, content, id_tgia, date, image)
-            VALUES ( $id_bviet,$title,$prd_name,$id_tloai,$description,$content,$id_tgia, $date,$image)";
-            $result = $conn->query($sql);
-            move_uploaded_file($image_tmp,'img/'.$image);
+            $sql = "INSERT INTO bieude,$ten_bhat,$ma_tloai,$tomtat,$noidung,$ma_tgia, $ngayviet,$hinhanh)";
+            $result = $conn->query($sql_them);
+            move_uploaded_file($image_tmp,'images/'.$hinhanh);
             header('location: index.php?page_layout=danhsach');
         }
     ?>
@@ -80,39 +84,51 @@
             <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Mã bài viết</label>
-                    <input type="number"name="id_bviet" class="form-control" require>
+                    <input type="number"name="ma_bviet" class="form-control" require>
                 </div>
                 <div class="form-group">
                     <label for="">Tiêu đề</label>
-                    <input type="text"name="title" class="form-control"require>
+                    <input type="text"name="tieude" class="form-control"require>
                 </div>
                 <div class="form-group">
                     <label for="">Tên bài hát</label>
-                    <input type="text"name="prd_name" class="form-control"require>
+                    <input type="text"name="ten_bhat" class="form-control"require>
                 </div>
                 <div class="form-group">
                     <label for="">Mã thể loại</label>
-                    <input type="number"name="id_tloai" class="form-control"require>
+                    <select class="form-control"name="ma_tloai" >
+                        <?php
+                            while($row_tloai = $result_tloai->fetch_assoc()){?>
+                                <option value="<?php echo $row_tloai['ma_tloai']; ?>"><?php echo $row_tloai['ten_tloai'];?></option>
+                            <?php } ?>
+                    </select>
+                    <!-- <input type="number"name="id_tloai" class="form-control"require> -->
                 </div>
                 <div class="form-group">
-                    <label for="">Tóm tắt</label>
-                    <input type="text"name="description" class="form-control"require>
+                    <label for="">Tóm tắt</label>                    
+                    <input type="text"name="tomtat" class="form-control"require>
                 </div>
                 <div class="form-group">
                     <label for="">Nội dung</label>
-                    <input type="text"name="content" class="form-control"require>
+                    <input type="text"name="noidung" class="form-control"require>
                 </div>
                 <div class="form-group">
                     <label for="">Mã tác giả</label>
-                    <input type="number"name="id_tgia" class="form-control"require>
+                    <select class="form-control"name="ma_tgia" >
+                        <?php
+                            while($row_tgia = $result_tgia->fetch_assoc()){?>
+                                <option value="<?php echo $row_tgia['ma_tgia']; ?>"><?php echo $row_tgia['ten_tgia'];?></option>
+                            <?php } ?>
+                    </select>
+                    <!-- <input type="number"name="ma_tgia" class="form-control"require> -->
                 </div>
                 <div class="form-group">
                     <label for="">Ngày viết</label>
-                    <input type="date"name="date" class="form-control"require>
+                    <input type="date"name="ngayviet" class="form-control"require>
                 </div>
                 <div class="form-group">
                     <label for="">Hình ảnh</label>
-                    <input type="file"name="image">
+                    <input type="file"name="hinhanh">
                 </div>
             </form>
 
@@ -126,11 +142,11 @@
         <div class="row">
             <div class="col-sm">
                 <!-- <h3 class="text-center text-uppercase fw-bold">Thêm mới thể loại</h3> -->
-                <form action="process_add_category.php" method="post">
+                <form action="article.php" method="post">
                     <div class="form-group  float-end ">
                         <!-- <input type="submit" value="Thêm" class="btn btn-success sbm"> -->
                         <button name="sbm"class="btn btn-success" type="submit" >Thêm</button>
-                        <a href="category.php" class="btn btn-warning ">Quay lại</a>
+                        <a href="article.php" class="btn btn-warning ">Quay lại</a>
                     </div>
                 </form>
             </div>
