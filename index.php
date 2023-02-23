@@ -67,15 +67,17 @@
     <main class="container-fluid mt-3">
         <h3 class="text-center text-uppercase mb-3 text-primary">TOP bài hát yêu thích</h3>
         <div class="row">
-        <?php
-          // Bước 01: Kết nối tới DB Server
-          $conn = mysqli_connect('localhost','root','','btth01_cse485');
-          if(!$conn){
-               die('Kết nối tới Server lỗi');
-          }
-          // Bước 02: Thực hiện truy vấn
-          $sql = "SELECT * FROM baiviet ";
-          $result = mysqli_query($conn, $sql);
+
+            <div class="col-sm-3">
+                <div class="card mb-2" style="width: 100%;">
+                    <img src="images/songs/cayvagio.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="detail.php" class="text-decoration-none">Cây, lá và gió</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
 
           // Bước 03: Xử lý kết quả trả về
           if(mysqli_num_rows($result) > 0){
