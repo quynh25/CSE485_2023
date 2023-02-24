@@ -74,7 +74,6 @@
                             <th scope="col">Tên thể loại</th>
                             <th>Sửa</th>
                             <th>Xóa</th>
-                            <th>Thêm</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,9 +87,6 @@
                                 </td>
                                 <td>
                                     <a href=""><i class="fa-solid fa-trash"></i></a>
-                                </td>
-                                <td>
-                                    <a href="add_category.php?id=1"><i class="fa-solid fa-circle-plus"></i></a>
                                 </td>
                             </tr>
                         <?php } ?>
