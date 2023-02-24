@@ -75,14 +75,7 @@ CREATE TABLE `tacgia` (
 --
 
 INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
-(1, 'Nhacvietplus', ''),
-(2, 'Sưu tầm', ''),
-(3, 'Sandy', ''),
-(4, 'Lê Trung Ngân', ''),
-(5, 'Khánh Ngọc', ''),
-(6, 'Night Stalker', ''),
-(7, 'Phạm Phương Anh', ''),
-(8, 'Tâm tình', '');
+
 
 -- --------------------------------------------------------
 
@@ -100,14 +93,14 @@ CREATE TABLE `theloai` (
 --
 
 INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
-(1, 'Nhạc trẻ'),
-(2, 'Nhạc trữ tình'),
-(3, 'Nhạc cách mạng'),
-(4, 'Nhạc thiếu nhi'),
-(5, 'Nhạc quê hương'),
-(6, 'POP'),
-(7, 'Rock'),
-(8, 'R&B');
+(NULL, 'Nhạc trẻ'),
+(NULL, 'Nhạc trữ tình'),
+(NULL, 'Nhạc cách mạng'),
+(NULL, 'Nhạc thiếu nhi'),
+(NULL, 'Nhạc quê hương'),
+(NULL, 'POP'),
+(NULL, 'Rock'),
+(NULL, 'R&B');
 
 -- --------------------------------------------------------
 
