@@ -43,63 +43,77 @@
 
     </header>
     <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Người dùng</a>
-                        </h5>
+            <?php
+                $host="localhost";
+                $username="root";
+                $password="";
+                $database="btth01_cse485";
+                $conn=mysqli_connect($host,$username,$password,$database);
+                mysqli_query($conn,"SET NAMES 'utf8'");
+                if (mysqli_connect_error()){
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                }
+                $sql = "SELECT COUNT(tendn) from users";
+                $result = mysqli_query($conn,$sql);
+                // Bước 03: Xử lý kết quả trả về
+                $row = mysqli_fetch_assoc($result) ;
+                
+            ?>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Người dùng</a>
+                                    </h5>
 
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
+                                    <h5 class="h1 text-center">
+                                    <?php echo $row['COUNT(tendn)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Thể loại</a>
+                                    </h5>
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Thể loại</a>
-                        </h5>
+                                    <h5 class="h1 text-center">
+                                    <?php echo $row['COUNT(tendn)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Tác giả</a>
+                                    </h5>
 
-                        <h5 class="h1 text-center">
-                            10
-                        </h5>
-                    </div>
-                </div>
-            </div>
+                                    <h5 class="h1 text-center">
+                                    <?php echo $row['COUNT(tendn)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Bài Viết</a>
+                                    </h5>
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Tác giả</a>
-                        </h5>
+                                    <h5 class="h1 text-center">
+                                    <?php echo $row['COUNT(tendn)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
 
-                        <h5 class="h1 text-center">
-                            20
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Bài viết</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
