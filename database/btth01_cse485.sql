@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2023 at 03:16 PM
+-- Generation Time: Feb 24, 2023 at 03:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -75,7 +75,14 @@ CREATE TABLE `tacgia` (
 --
 
 INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
-
+(1, 'Nhacvietplus', ''),
+(2, 'Sưu tầm', ''),
+(3, 'Sandy', ''),
+(4, 'Lê Trung Ngân', ''),
+(5, 'Khánh Ngọc', ''),
+(6, 'Night Stalker', ''),
+(7, 'Phạm Phương Anh', ''),
+(8, 'Tâm tình', '');
 
 -- --------------------------------------------------------
 
@@ -93,14 +100,14 @@ CREATE TABLE `theloai` (
 --
 
 INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
-(NULL, 'Nhạc trẻ'),
-(NULL, 'Nhạc trữ tình'),
-(NULL, 'Nhạc cách mạng'),
-(NULL, 'Nhạc thiếu nhi'),
-(NULL, 'Nhạc quê hương'),
-(NULL, 'POP'),
-(NULL, 'Rock'),
-(NULL, 'R&B');
+(1, 'Nhạc trẻ'),
+(2, 'Nhạc trữ tình'),
+(3, 'Nhạc cách mạng'),
+(4, 'Nhạc thiếu nhi'),
+(5, 'Nhạc quê hương'),
+(6, 'POP'),
+(7, 'Rock'),
+(8, 'R&B');
 
 -- --------------------------------------------------------
 
