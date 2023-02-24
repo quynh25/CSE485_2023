@@ -84,7 +84,7 @@
                 while($row = mysqli_fetch_assoc($result)){
         ?>
             <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
+                <div class="card mb-2" style="width: 100% ">
                     <img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title text-center">
