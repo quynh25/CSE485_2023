@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2023 at 02:58 PM
+-- Generation Time: Feb 24, 2023 at 03:16 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -108,6 +108,27 @@ INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
 (6, 'POP'),
 (7, 'Rock'),
 (8, 'R&B');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `tendn` varchar(100) NOT NULL,
+  `matkhau` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`tendn`, `matkhau`) VALUES
+('xuan', '123'),
+('huyen', '456'),
+('giang', '789'),
+('quynh', '567');
 
 --
 -- Indexes for dumped tables
