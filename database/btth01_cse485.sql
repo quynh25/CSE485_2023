@@ -75,14 +75,14 @@ CREATE TABLE `tacgia` (
 --
 
 INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
-(1, 'Nhacvietplus', NULL),
-(2, 'Sưu tầm', NULL),
-(3, 'Sandy', NULL),
-(4, 'Lê Trung Ngân', NULL),
-(5, 'Khánh Ngọc', NULL),
-(6, 'Night Stalker', NULL),
-(7, 'Phạm Phương Anh', NULL),
-(8, 'Tâm tình', NULL);
+(NULL, 'Nhacvietplus', https://nhacvietplus.com.vn/wp-content/uploads/2020/12/logo.png),
+(NULL, 'Sưu tầm', NULL),
+(NULL, 'Sandy', NULL),
+(NULL, 'Lê Trung Ngân', NULL),
+(NULL, 'Khánh Ngọc', NULL),
+(NULL, 'Night Stalker', NULL),
+(NULL, 'Phạm Phương Anh', NULL),
+(NULL, 'Tâm tình', NULL);
 
 -- --------------------------------------------------------
 
@@ -100,14 +100,14 @@ CREATE TABLE `theloai` (
 --
 
 INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
-(1, 'Nhạc trẻ'),
-(2, 'Nhạc trữ tình'),
-(3, 'Nhạc cách mạng'),
-(4, 'Nhạc thiếu nhi'),
-(5, 'Nhạc quê hương'),
-(6, 'POP'),
-(7, 'Rock'),
-(8, 'R&B');
+(NULL, 'Nhạc trẻ'),
+(NULL, 'Nhạc trữ tình'),
+(NULL, 'Nhạc cách mạng'),
+(NULL, 'Nhạc thiếu nhi'),
+(NULL, 'Nhạc quê hương'),
+(NULL, 'POP'),
+(NULL, 'Rock'),
+(NULL, 'R&B');
 
 -- --------------------------------------------------------
 
