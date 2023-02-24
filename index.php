@@ -68,35 +68,35 @@
         <h3 class="text-center text-uppercase mb-3 text-primary">TOP bài hát yêu thích</h3>
         <div class="row">
         <?php
-          // Bước 01: Kết nối tới DB Server
-          $conn = mysqli_connect('localhost','root','','btth01_cse485');
-          if(!$conn){
-               die('Kết nối tới Server lỗi');
-          }
-          // Bước 02: Thực hiện truy vấn
-          $sql = "SELECT * FROM baiviet ";
-          $result = mysqli_query($conn, $sql);
-
-          // Bước 03: Xử lý kết quả trả về
-          if(mysqli_num_rows($result) > 0){
-               while($row = mysqli_fetch_assoc($result)){
-          ?>
-                    <div class="col-sm">
-                         <div class="card" style="width: 18rem; margin: 10px 20px;">
-                         <img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="...">
-                         <div class="card-body">
-                              <h5 class="card-title">
-                                   <a href="detail.php" class="text-decoration-none">
-                                        <?php echo $row['ten_bhat'];?>
-                                   </a>
-                              </h5>
-                         </div>
-                         </div>
+            $host="localhost";
+            $username="root";
+            $password="";
+            $database="btth01_cse485";
+            $conn=mysqli_connect($host,$username,$password,$database);
+            mysqli_query($conn,"SET NAMES 'utf8'");
+            if (mysqli_connect_error()){
+                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
+            $sql = "SELECT * FROM baiviet";
+            $result = mysqli_query($conn,$sql);
+            // Bước 03: Xử lý kết quả trả về
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+        ?>
+            <div class="col-sm-3">
+                <div class="card mb-2" style="width: 100%;">
+                    <img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="./detail.php?tieude=<?php echo $row['tieude']?>" class="text-decoration-none"><?php echo $row['ten_bhat'];?></a>
+                        </h5>
                     </div>
-          <?php
-               }
-          }
-          ?>
+                </div>
+            </div>
+        <?php
+                }
+            }
+        ?>
         </div>
     </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">

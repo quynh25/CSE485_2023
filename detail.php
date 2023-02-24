@@ -1,3 +1,9 @@
+<?php
+$tieude = $_GET['tieude'];
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,17 +53,16 @@
                die('Kết nối tới Server lỗi');
           }
           // Bước 02: Thực hiện truy vấn
-          $sql = "SELECT ten_bhat, ten_tloai,tomtat,noidung, ten_tgia, hinhanh
-          FROM baiviet
+          $sql = "SELECT * FROM baiviet
           INNER JOIN tacgia
           ON tacgia.ma_tgia = baiviet.ma_tgia
           INNER JOIN theloai
-          ON baiviet.ma_tloai = theloai.ma_tloai; ";
+          ON baiviet.ma_tloai = theloai.ma_tloai
+          where tieude = '$tieude' ";
           $result = mysqli_query($conn, $sql);
 
           // Bước 03: Xử lý kết quả trả về
-          if(mysqli_num_rows($result) > 0){
-               while($row = mysqli_fetch_assoc($result)){
+          $row = mysqli_fetch_assoc($result) ;
           ?>
                      <div class="row mb-5">
                     <div class="col-sm-4">
@@ -76,8 +81,8 @@
                     </div>          
                 </div>
           <?php
-               }
-          }
+            
+         
           ?>
                
     </main>
