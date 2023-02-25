@@ -1,3 +1,20 @@
+<?php
+       
+        $conn = mysqli_connect('localhost','root','','btth01_cse485');
+        if($conn){
+            mysqli_query($conn,"SET NAMES 'UTF8'");
+            // echo "ket noi thanh cong";
+        }else{
+            echo 'ket noi that bai';
+        }
+        $sql = "select * from baiviet";
+        
+        $result = mysqli_query($conn,$sql);
+       
+        
+        
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,21 +60,7 @@
         </nav>
 
     </header>
-    <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $conn = new mysqli($servername, $username, $password,'btth01_cse485');
-
-        // Check connection
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        $sql = "select * from baiviet";
-        
-        $result = $conn->query($sql);
-        
-    ?>
+    
     <div class="container-fluid">
     <a href="add_article.php" class="btn btn-success"style="margin: 50px 0 50px 0;">Thêm mới</a>
         <div class="card">
@@ -80,18 +83,19 @@
                     </thead>
                     <tbody>
                         <?php
-                            while($row = $result->fetch_assoc()){?>
+                            $i=1;
+                            while($row = mysqli_fetch_assoc($result)){?>
                                 <tr >
-                                    <td><?php echo $row['ma_bviet']?></td>
-                                    <td><?php echo $row['tieude']?></td>
-                                    <td><?php echo $row['ten_bhat']?></td>
+                                    <td ><?php echo $i++;?></td>
+                                    <td style="width:7rem;"><?php echo $row['tieude']?></td>
+                                    <td style="width:7rem;"><?php echo $row['ten_bhat']?></td>
                                     <td><?php echo $row['ma_tloai']?></td>
-                                    <td><?php echo $row['tomtat']?></td>
-                                    <td><?php echo $row['noidung']?></td>
+                                    <td style="width:25rem;"><?php echo $row['tomtat']?></td>
+                                    <td style="width:25rem;"><?php echo $row['noidung']?></td>
                                     <td><?php echo $row['ma_tgia']?></td>
                                     <td><?php echo $row['ngayviet']?></td>
                                     <td>
-                                        <img src="img/<?php echo $row['hinhanh'];?>">
+                                        <img style="width:30rem;"src="images/<?php echo $row['hinhanh'];?>">
                                     </td>
                                     
                                     <td><a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a></td>
@@ -112,3 +116,4 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
+</html>
