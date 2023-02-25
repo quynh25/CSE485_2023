@@ -57,8 +57,19 @@
                 }
                 $sql = "SELECT COUNT(tendn) from users";
                 $result = mysqli_query($conn,$sql);
-                // Bước 03: Xử lý kết quả trả về
                 $row = mysqli_fetch_assoc($result) ;
+
+                $sql1 = "SELECT COUNT(ma_tloai) from theloai ";
+                $result1 = mysqli_query($conn,$sql1);
+                $row1 = mysqli_fetch_assoc($result1) ;
+
+                $sql2 = "SELECT COUNT(ma_tgia) from tacgia ";
+                $result2 = mysqli_query($conn,$sql2);
+                $row2 = mysqli_fetch_assoc($result2) ;
+
+                $sql3 = "SELECT COUNT(ma_bviet) from baiviet ";
+                $result3 = mysqli_query($conn,$sql3);
+                $row3 = mysqli_fetch_assoc($result3) ;
                 
             ?>
                         <div class="col-sm-3">
@@ -82,7 +93,7 @@
                                     </h5>
 
                                     <h5 class="h1 text-center">
-                                    <?php echo $row['COUNT(tendn)'];?>
+                                    <?php echo $row1['COUNT(ma_tloai)'];?>
                                     </h5>
                                 </div>
                             </div>
@@ -95,7 +106,7 @@
                                     </h5>
 
                                     <h5 class="h1 text-center">
-                                    <?php echo $row['COUNT(tendn)'];?>
+                                       <?php echo $row2['COUNT(ma_tgia)'];?>
                                     </h5>
                                 </div>
                             </div>
@@ -108,7 +119,7 @@
                                     </h5>
 
                                     <h5 class="h1 text-center">
-                                    <?php echo $row['COUNT(tendn)'];?>
+                                       <?php echo $row3['COUNT(ma_bviet)'];?>
                                     </h5>
                                 </div>
                             </div>
