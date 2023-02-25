@@ -26,4 +26,8 @@ SELECT * FROM baiviet WHERE ten_bhat LIKE '%yêu%'
 OR ten_bhat LIKE '%thương%' 
 OR ten_bhat LIKE '%anh%' 
 OR ten_bhat LIKE '%em%';
-
+/*i*/ 
+CREATE VIEW vw_Music AS 
+SELECT bv.ma_bviet, bv.tieude,bv.ten_bhat,bv.ma_tloai,bv.tomtat,bv.noidung, bv.ma_tgia, bv.ngayviet, bv.hinhanh, tl.ten_tloai, tg.ten_tgia FROM baiviet as bv 
+JOIN theloai as tl ON bv.ma_tloai = tl.ma_tloai 
+JOIN tacgia as tg ON bv.ma_tgia = tg.ma_tgia;
