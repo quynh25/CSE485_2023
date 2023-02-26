@@ -55,6 +55,7 @@
 
         $sql = "select * from theloai where ma_tloai";
         $result = $conn->query($sql);
+        $id = $_GET['id'];
     ?>
 
     <main class="container mt-5 mb-5">
@@ -63,20 +64,21 @@
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Sửa thông tin thể loại</h3>
                 <?php
-                    while($row = $result->fetch_assoc()){
-                        $matloai = $row["ma_tloai"];
-                        $tentloai = $row["ten_tloai"];
-                    }
+                    $sql = "SELECT * FROM theloai WHERE ma_tloai='$id'";
+                    $result = mysqli_query($conn,$sql);
+    
+                    if(mysqli_num_rows($result)>0){
+                        $row = mysqli_fetch_assoc($result)
                 ?>
                 <form action="process_edit_category.php" method="post">
                 <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatId">Mã thể loại</span>
-                        <input type="text" class="form-control" name="txtCatId" readonly ="readonly" value="<?php echo $matloai ?>">
+                        <input type="text" class="form-control" name="txtCatId" readonly ="readonly" value="<?php echo $row['ma_tloai'] ?>">
                     </div>
 
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên thể loại</span>
-                        <input type="text" class="form-control" name="txtCatName" value = "<?php echo $tentloai ?>">
+                        <input type="text" class="form-control" name="txtCatName" value = "<?php echo $row['ten_tloai'] ?>">
                     </div>
 
                     <div class="form-group  float-end ">
@@ -84,6 +86,9 @@
                         <a href="category.php" class="btn btn-warning ">Quay lại</a>
                     </div>
                 </form>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </main>
