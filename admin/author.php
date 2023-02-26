@@ -28,10 +28,10 @@
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="category.php">Thể loại</a>
+                        <a class="nav-link" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="author.php">Tác giả</a>
+                        <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="article.php">Bài viết</a>
@@ -61,15 +61,13 @@
                     <?php
                         $host="localhost";
                         $username="root";
-                        $password="123";
+                        $password="";
                         $database="btth01_cse485";
                         $conn=mysqli_connect($host,$username,$password,$database);
                         mysqli_query($conn,"SET NAMES 'utf8'");
                         if (mysqli_connect_error()){
                             echo "Failed to connect to MySQL: " . mysqli_connect_error();
                         }
-                        else{
-                            echo "Success to connect to MySQL"; }
                         $sql = "SELECT * FROM tacgia";
                         $result = mysqli_query($conn,$sql);
 
@@ -83,10 +81,10 @@
                                         <img id="img-avt" src="<?php echo $row['hinh_tgia']?>" alt="" style="width:10%">
                                     </td>
                                     <td>
-                                        <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="edit_author.php?id=<?php echo $row['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                     </td>
                                     <td>
-                                        <a href=""><i onclick="remove_tgia() class="fa-solid fa-trash"></i></a>
+                                        <a href=""><i onclick="remove_tgia()" class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                     <?php

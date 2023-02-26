@@ -28,10 +28,10 @@
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="category.php">Thể loại</a>
+                        <a class="nav-link" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="author.php">Tác giả</a>
+                        <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="article.php">Bài viết</a>
@@ -58,9 +58,30 @@
                     </div>
 
                     <div class="form-group  float-end ">
-                        <input type="submit" value="Thêm" class="btn btn-success">
-                        <a href="category.php" class="btn btn-warning ">Quay lại</a>
+                        <input type="submit" class="btn btn-success" name="insert" value="Thêm">
+                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
                     </div>
+                    <?php
+                        $host="localhost";
+                        $username="root";
+                        $password="";
+                        $database="btth01_cse485";
+                        $conn=mysqli_connect($host,$username,$password,$database);
+                        mysqli_query($conn,"SET NAMES 'utf8'");
+                        if (mysqli_connect_error()){
+                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                        }
+                        if (isset($_POST['action'])) {
+                            switch ($_POST['action']) {
+                                case 'insert':
+                                    insert();
+                                    break;
+                            }
+                        }
+                        function insert(){
+                            echo abc;
+                        }
+                    ?>
                 </form>
             </div>
         </div>
