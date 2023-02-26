@@ -59,7 +59,7 @@
         
     ?>
     <div class="container-fluid">
-    <a href="add_article.php" class="btn btn-success"style="margin: 50px 0 50px 0;">Thêm mới</a>
+    <a href="add.article.php" class="btn btn-success"style="margin: 50px 0 50px 0;">Thêm mới</a>
         <div class="card">
             <div class="card-body">
                 <table class="table">

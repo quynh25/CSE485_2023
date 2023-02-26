@@ -1,18 +1,29 @@
-<?php
-$host="localhost";
-$username="root";
-$password="";
-$database="btth01_cse485";
-$conn = mysqli_connect($host,$username,$password,$database);
-mysqli_query($conn,"SET NAMES 'utf8'");
-if (mysqli_connect_error()){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-$sql = "SELECT * FROM tacgia";
-$result = mysqli_query($conn,$sql);
+<?php 
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $conn = new mysqli($servername, $username, $password,'btth01_cse485');
+
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
+//kiểm tra khi ng dùng ADD
+    if (isset($_POST["insert"])){
+        $matgia = NULL;
+        $tentgia = $_POST["txtName"];
+        $hinhtgia = NULL;
+
+        $sql="INSERT INTO tacgia VALUES ('$matgia','$tentgia','$hinhtgia')";
+        if (mysqli_query($conn, $sql)){
+        }
+        else {
+            $result = "Lỗi thêm mới" .mysqli_error($conn);
+        }
+    }
+    ?>
 
 
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,41 +73,8 @@ $result = mysqli_query($conn,$sql);
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên tác giả</th>
-                            <th scope="col">Ảnh tác giả</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        if(mysqli_num_rows($result)>0){
-                            while($row = mysqli_fetch_assoc($result)){
-                    ?>
-                                <tr>
-                                    <th scope="row"><?php echo $row['ma_tgia']?></th>
-                                    <td><?php echo $row['ten_tgia']?></td>
-                                    <td>
-                                        <img id="img-avt" src="<?php echo $row['hinh_tgia']?>" alt="" style="width:10%">
-                                    </td>
-                                    <td>
-                                        <a href="edit_author.php?id=<?php echo $row['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href=""><i onclick="remove_tgia()" class="fa-solid fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                    <?php
-                            }
-                        }
-                    ?>
-                    </tbody>
-                </table>
+                <h3 class="text-center text-uppercase fw-bold">Thêm thành công!</h3>
+                <a href="author.php" class="btn btn-warning text-center">Quay lại</a>
             </div>
         </div>
     </main>
