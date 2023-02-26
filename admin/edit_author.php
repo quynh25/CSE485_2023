@@ -75,12 +75,9 @@
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>
                         <input type="text" class="form-control" name="txtCatName" value = "<?php echo $row['ten_tgia']?>">
                     </div>
-                    <?php
-                        $link = $row['hinh_tgia'];
-                    ?>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Ảnh tác giả</span>
-                        <input type="text" class="form-control" name="txtCatName" value = "<?php echo strlen($link)?>">
+                        <input type="text" class="form-control" name="txtCatName" value = "<?php html_escape($row['hinh_tgia'])?>">
                     </div>
                     <div class="form-group  float-end ">
                         <input type="submit" value="Lưu lại" class="btn btn-success">
