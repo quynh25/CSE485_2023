@@ -1,19 +1,12 @@
 <?php
-       
-        $conn = mysqli_connect('localhost','root','','btth01_cse485');
-        if($conn){
-            mysqli_query($conn,"SET NAMES 'UTF8'");
-            // echo "ket noi thanh cong";
-        }else{
-            echo 'ket noi that bai';
-        }
-        $sql = "select * from baiviet";
-        
-        $result = mysqli_query($conn,$sql);
-       
-        
-        
-    ?>
+    
+    require_once 'db_article.php';    
+    
+    $sql = "SELECT tieude, ten_bhat, ten_tloai,tomtat,noidung, ten_tgia, ngayviet,hinhanh FROM baiviet INNER JOIN tacgia 
+            ON tacgia.ma_tgia = baiviet.ma_tgia INNER JOIN theloai ON baiviet.ma_tloai = theloai.ma_tloai ";
+    $query = mysqli_query($conn, $sql);
+   
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +55,7 @@
     </header>
     
     <div class="container-fluid">
-    <a href="add_article.php" class="btn btn-success"style="margin: 50px 0 50px 0;">Thêm mới</a>
+    <a href="add_article.php" class="btn btn-primary"style="margin: 50px 0 50px 0;">Thêm mới</a>
         <div class="card">
             <div class="card-body">
                 <table class="table">
@@ -71,31 +64,31 @@
                             <th>STT</th>
                             <th>Tiêu đề</th>
                             <th>Tên bài hát</th>
-                            <th>Mã thể loại</th>
+                            <th>Tên thể loại</th>
                             <th>Tóm tắt</th>
                             <th>Nội dung</th>
-                            <th>Mã tác giả</th>
+                            <th>Tác giả</th>
                             <th>Ngày viết</th>
                             <th>Hình ảnh</th>
                             <th>Sửa</th>
-                            <th>Xóa</th>
+                            <th> Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             $i=1;
-                            while($row = mysqli_fetch_assoc($result)){?>
+                            while($row = mysqli_fetch_assoc($query)){?>
                                 <tr >
                                     <td ><?php echo $i++;?></td>
                                     <td style="width:7rem;"><?php echo $row['tieude']?></td>
                                     <td style="width:7rem;"><?php echo $row['ten_bhat']?></td>
-                                    <td><?php echo $row['ma_tloai']?></td>
+                                    <td><?php echo $row['ten_tloai']?></td>
                                     <td style="width:25rem;"><?php echo $row['tomtat']?></td>
                                     <td style="width:25rem;"><?php echo $row['noidung']?></td>
-                                    <td><?php echo $row['ma_tgia']?></td>
+                                    <td><?php echo $row['ten_tgia']?></td>
                                     <td><?php echo $row['ngayviet']?></td>
                                     <td>
-                                        <img style="width:30rem;"src="images/<?php echo $row['hinhanh'];?>">
+                                        <img style="width:10rem;"src="images/<?php echo $row['hinhanh'];?>">
                                     </td>
                                     
                                     <td><a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a></td>
