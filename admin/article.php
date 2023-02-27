@@ -1,13 +1,3 @@
-<?php
-    
-    require_once 'db_article.php';    
-    
-    $sql = "SELECT tieude, ten_bhat, ten_tloai,tomtat,noidung, ten_tgia, ngayviet,hinhanh FROM baiviet INNER JOIN tacgia 
-            ON tacgia.ma_tgia = baiviet.ma_tgia INNER JOIN theloai ON baiviet.ma_tloai = theloai.ma_tloai ";
-    $query = mysqli_query($conn, $sql);
-   
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +7,9 @@
     <title>Music for Life</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style_category_baiviet.css">
+    <link rel="stylesheet" href="css/style_login.css">
 </head>
 <body>
-    
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary shadow p-3 bg-white rounded">
             <div class="container-fluid">
@@ -39,7 +28,7 @@
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  " href="category.php">Thể loại</a>
+                        <a class="nav-link " href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="author.php">Tác giả</a>
@@ -53,57 +42,77 @@
         </nav>
 
     </header>
-    
-    <div class="container-fluid">
-    <a href="add_article.php" class="btn btn-primary"style="margin: 50px 0 50px 0;">Thêm mới</a>
-        <div class="card">
-            <div class="card-body">
+    <main class="container mt-5 mb-5">
+        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+        <div class="row">
+        
+            <div class="col-sm">
+                <a href="./add_article.php" class="btn btn-success">Thêm mới</a>
                 <table class="table">
-                    <thead class="thead-dark">
-                        <tr >
-                            <th>STT</th>
-                            <th>Tiêu đề</th>
-                            <th>Tên bài hát</th>
-                            <th>Tên thể loại</th>
-                            <th>Tóm tắt</th>
-                            <th>Nội dung</th>
-                            <th>Tác giả</th>
-                            <th>Ngày viết</th>
-                            <th>Hình ảnh</th>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tiêu đề</th>
+                            <th scope="col">Tên bài hát</th>
+                            <th scope="col">Tên thể loại</th>
+                            <th scope="col">Tóm tắt</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Tác giả</th>
+                            <th scope="col">Ngày viết</th>
+                            <th scope="col">Hình ảnh</th>
                             <th>Sửa</th>
-                            <th> Xóa</th>
+                            <th>Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            $i=1;
-                            while($row = mysqli_fetch_assoc($query)){?>
-                                <tr >
-                                    <td ><?php echo $i++;?></td>
-                                    <td style="width:7rem;"><?php echo $row['tieude']?></td>
-                                    <td style="width:7rem;"><?php echo $row['ten_bhat']?></td>
-                                    <td><?php echo $row['ten_tloai']?></td>
-                                    <td style="width:25rem;"><?php echo $row['tomtat']?></td>
-                                    <td style="width:25rem;"><?php echo $row['noidung']?></td>
-                                    <td><?php echo $row['ten_tgia']?></td>
-                                    <td><?php echo $row['ngayviet']?></td>
-                                    <td>
-                                        <img style="width:10rem;"src="images/<?php echo $row['hinhanh'];?>">
-                                    </td>
-                                    
-                                    <td><a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                    <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
-                           <?php } ?>
+                         <?php
+                         $host="localhost";
+                         $username="root";
+                         $password="";
+                         $database="btth01_cse485";
+                         $conn=mysqli_connect($host,$username,$password,$database);
+                         mysqli_query($conn,"SET NAMES 'utf8'");
+                         if (mysqli_connect_error()){
+                              echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                         }
+                         $sql = "SELECT *FROM baiviet 
+                         INNER JOIN theloai ON baiviet.ma_tloai= theloai.ma_tloai
+                         INNER JOIN tacgia ON tacgia.ma_tgia= baiviet.ma_tgia ORDER BY ma_bviet ASC";
+                         $result = mysqli_query($conn,$sql);
+                        
+                         if(mysqli_num_rows($result) > 0){
+                              $i=1;
+                              while($row = mysqli_fetch_assoc($result)){
+                         ?>
+                              <tr>
+                                   <th><?php echo $row['ma_bviet']; ?></th>
+                                   <td><?php echo $row['tieude']; ?></td>
+                                   <td><?php echo $row['ten_bhat']; ?></td>
+                                   <td><?php echo $row['ten_tloai']; ?></td>
+                                   <td><?php echo $row['tomtat']; ?></td>
+                                   <td><?php echo $row['noidung']; ?></td>
+                                   <td><?php echo $row['ten_tgia']; ?></td>
+                                   <td><?php echo $row['ngayviet']; ?></td>
+                                   <td><img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="..."></td>
+                                   <td>
+                                        <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                   </td>
+                                   <td>
+                                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                                   </td>
+                              </tr>
+                         <?php
+                              }
+                         }
+                         ?>     
+                        
                         
                        
                     </tbody>
                 </table>
             </div>
-            
-        <div>
-        
-    </div>
+        </div>
+    </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
         <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
     </footer>
