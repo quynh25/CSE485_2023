@@ -118,15 +118,15 @@
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Nội dung</span>
-                        <!-- <input type="text" class="form-control" name="noidung"  > -->
-                        <div id="noidung"name="noidung" class="form-control"></div>
-                        <script>
+                        <input type="text" class="form-control" name="noidung"  >
+                        <!-- <div id="noidung"name="noidung" class="form-control"></div> -->
+                        <!-- <script>
                             ClassicEditor
                                 .create( document.querySelector( '#noidung' ) )
                                 .catch( error => {
                                     console.error( error );
                                 } );
-                        </script>
+                        </script> -->
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>

@@ -100,7 +100,7 @@
                                         <a href="edit_article.php?id=<?php echo $row['ma_bviet']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                    </td>
                                    <td>
-                                        <a href="delete_article.php?id=<?php echo $row['ma_bviet']?>"><i class="fa-solid fa-trash"></i></a>
+                                        <a onclick="return Del()" href="delete_article.php?id=<?php echo $row['ma_bviet']?>"><i class="fa-solid fa-trash"></i></a>
                                    </td>
                               </tr>
                          <?php
@@ -119,5 +119,10 @@
         <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        function Del(){
+            return confirm("Bạn có chắc chắn muốn xóa bài viết ?");
+        }
+    </script>
 </body>
 </html>
