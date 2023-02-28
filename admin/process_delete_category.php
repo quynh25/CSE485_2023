@@ -18,5 +18,5 @@
         // $result = "Xóa không thành công" .mysqli_error($conn);
     }
     mysqli_close($conn);
-    header('location: http://localhost/GitHub/CSE485_2023/admin/category.php')
+    header('location: ../admin/category.php')
     ?>

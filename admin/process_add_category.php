@@ -17,8 +17,10 @@
     $sql="INSERT INTO theloai VALUES ('$matloai','$tentloai')";
     if (mysqli_query($conn, $sql)){
         
-        // echo "Connected successfully";
-        header('location: http://localhost/GitHub/CSE485_2023/admin/category.php');
+
+     // echo "Connected successfully";
+        header('location: ../admin/category.php');
+
     }
     else {
         $result = "Lỗi thêm mới" .mysqli_error($conn);
