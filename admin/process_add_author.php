@@ -1,3 +1,30 @@
+<?php 
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $conn = new mysqli($servername, $username, $password,'btth01_cse485');
+
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
+//kiểm tra khi ng dùng ADD
+    if (isset($_POST["insert"])){
+        $matgia = NULL;
+        $tentgia = $_POST["txtName"];
+        $hinhtgia = NULL;
+
+        $sql="INSERT INTO tacgia VALUES ('$matgia','$tentgia','$hinhtgia')";
+        if (mysqli_query($conn, $sql)){
+        }
+        else {
+            $result = "Lỗi thêm mới" .mysqli_error($conn);
+        }
+    }
+    ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,51 +69,12 @@
         </nav>
 
     </header>
-    <?php
-        $host="localhost";
-        $username="root";
-        $password="";
-        $database="btth01_cse485";
-        $conn=mysqli_connect($host,$username,$password,$database);
-        mysqli_query($conn,"SET NAMES 'utf8'");
-        if (mysqli_connect_error()){
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }                    
-        $id = $_GET['id'];
-    ?>
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
-                <?php
-                $sql = "SELECT * FROM tacgia WHERE ma_tgia='$id'";
-                $result = mysqli_query($conn,$sql);
-
-                if(mysqli_num_rows($result)>0){
-                    $row = mysqli_fetch_assoc($result)
-                ?>
-                <form action="process_add_category.php" method="post">
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatId">Mã tác giả</span>
-                        <input type="text" class="form-control" name="txtId" readonly value="<?php echo $row['ma_tgia']?>">
-                    </div>
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="txtName" value = "<?php echo $row['ten_tgia']?>">
-                    </div>
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatName">Ảnh tác giả</span>
-                        <input type="text" class="form-control" name="" value = "">
-                    </div>
-                    <div class="form-group  float-end ">
-                        <input type="submit" value="Lưu lại" class="btn btn-success">
-                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
-                    </div>
-                </form>
-                <?php
-                }
-                ?>
+                <h3 class="text-center text-uppercase fw-bold">Thêm thành công!</h3>
+                <a href="author.php" class="btn btn-warning text-center">Quay lại</a>
             </div>
         </div>
     </main>

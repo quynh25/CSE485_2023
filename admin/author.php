@@ -1,3 +1,19 @@
+<?php
+$host="localhost";
+$username="root";
+$password="";
+$database="btth01_cse485";
+$conn = mysqli_connect($host,$username,$password,$database);
+mysqli_query($conn,"SET NAMES 'utf8'");
+if (mysqli_connect_error()){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+$sql = "SELECT * FROM tacgia";
+$result = mysqli_query($conn,$sql);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,18 +75,6 @@
                     </thead>
                     <tbody>
                     <?php
-                        $host="localhost";
-                        $username="root";
-                        $password="";
-                        $database="btth01_cse485";
-                        $conn=mysqli_connect($host,$username,$password,$database);
-                        mysqli_query($conn,"SET NAMES 'utf8'");
-                        if (mysqli_connect_error()){
-                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                        }
-                        $sql = "SELECT * FROM tacgia";
-                        $result = mysqli_query($conn,$sql);
-
                         if(mysqli_num_rows($result)>0){
                             while($row = mysqli_fetch_assoc($result)){
                     ?>
@@ -84,14 +88,13 @@
                                         <a href="edit_author.php?id=<?php echo $row['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                     </td>
                                     <td>
-                                        <a href=""><i onclick="remove_tgia()" class="fa-solid fa-trash"></i></a>
+                                        <a href="process_delete_author.php?id<?php echo $row['ma_tgia']; ?>"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                     <?php
                             }
                         }
                     ?>
-                        
                     </tbody>
                 </table>
             </div>
