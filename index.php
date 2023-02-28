@@ -77,7 +77,7 @@
             if (mysqli_connect_error()){
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }
-            $sql = "SELECT * FROM baiviet";
+            $sql = "SELECT * FROM baiviet ORDER BY ma_bviet ASC ";
             $result = mysqli_query($conn,$sql);
             // Bước 03: Xử lý kết quả trả về
             if(mysqli_num_rows($result) > 0){
