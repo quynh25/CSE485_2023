@@ -17,7 +17,7 @@
     $sql="INSERT INTO theloai VALUES ('$matloai','$tentloai')";
     if (mysqli_query($conn, $sql)){
         
-        // echo "Connected successfully";
+     // echo "Connected successfully";
         header('location: ../admin/category.php');
     }
     else {
