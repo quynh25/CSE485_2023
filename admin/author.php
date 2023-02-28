@@ -3,13 +3,15 @@ $host="localhost";
 $username="root";
 $password="";
 $database="btth01_cse485";
-$conn=mysqli_connect($host,$username,$password,$database);
+$conn = mysqli_connect($host,$username,$password,$database);
 mysqli_query($conn,"SET NAMES 'utf8'");
 if (mysqli_connect_error()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 $sql = "SELECT * FROM tacgia";
 $result = mysqli_query($conn,$sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,6 @@ $result = mysqli_query($conn,$sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style_login.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 </head>
 <body>
     <header>
@@ -87,14 +88,13 @@ $result = mysqli_query($conn,$sql);
                                         <a href="edit_author.php?id=<?php echo $row['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                     </td>
                                     <td>
-                                        <a href=""><i onclick="remove_tgia()" class="fa-solid fa-trash"></i></a>
+                                        <a href="process_delete_author.php?id<?php echo $row['ma_tgia']; ?>"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                     <?php
                             }
                         }
                     ?>
-                    <div id="editor"></div>
                     </tbody>
                 </table>
             </div>
@@ -103,14 +103,6 @@ $result = mysqli_query($conn,$sql);
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
         <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
     </footer>
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

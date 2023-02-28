@@ -55,7 +55,11 @@
     </header>
     
     <div class="container-fluid">
+<<<<<<< HEAD
+    <a href="add.article.php" class="btn btn-success"style="margin: 50px 0 50px 0;">Thêm mới</a>
+=======
     <a href="add_article.php" class="btn btn-primary"style="margin: 50px 0 50px 0;">Thêm mới</a>
+>>>>>>> 34214ef8c5a946a8b58b6bc92160384e7d9dccaf
         <div class="card">
             <div class="card-body">
                 <table class="table">
