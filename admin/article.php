@@ -47,7 +47,7 @@
 
         <div class="card">
             <div class="card-body">
-
+                <a href="./add_article.php" class="btn btn-success">Thêm mới</a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -86,14 +86,14 @@
                          ?>
                               <tr>
                                    <th><?php echo $i++ ?></th>
-                                   <td><?php echo $row['tieude']; ?></td>
-                                   <td><?php echo $row['ten_bhat']; ?></td>
+                                   <td style="width:50px;"><?php echo $row['tieude']; ?></td>
+                                   <td style="width:50px;"><?php echo $row['ten_bhat']; ?></td>
                                    <td><?php echo $row['ten_tloai']; ?></td>
-                                   <td><?php echo $row['tomtat']; ?></td>
-                                   <td><?php echo $row['noidung']; ?></td>
-                                   <td><?php echo $row['ten_tgia']; ?></td>
-                                   <td><?php echo $row['ngayviet']; ?></td>
-                                   <td><img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="..."></td>
+                                   <td style="width:25rem;"><?php echo $row['tomtat']; ?></td>
+                                   <td style="width:25rem;"><?php echo $row['noidung']; ?></td>
+                                   <td style="width:50px;"><?php echo $row['ten_tgia']; ?></td>
+                                   <td style="width:100px;"><?php echo $row['ngayviet']; ?></td>
+                                   <td style="width:150px;"><img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="..."></td>
                                    <td>
                                         <a href="edit_article.php?id=<?php echo $row['ma_bviet']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                    </td>
