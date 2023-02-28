@@ -17,7 +17,7 @@
     $sql = "UPDATE theloai SET ten_tloai = '$tentloai' WHERE ma_tloai = '$matloai'";
     if (mysqli_query($conn, $sql)){
         // echo "Connected successfully";
-        header('location: http://localhost/BTTH01/btth01/admin/category.php');
+        header('location: ../admin/category.php');
     }
     else {
         $result = "Cập nhật chưa thành công" .mysqli_error($conn);
