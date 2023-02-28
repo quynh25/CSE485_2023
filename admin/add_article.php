@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style_login.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 </head>
 <body>
     <header>
@@ -68,7 +69,7 @@
                $matgia= $_POST['matgia'];
                $ngayviet= $_POST['ngay'];
                $hinhanh = $_FILES['anh']['name'];
-               $hinhanh_tmp = $_FILES['anh']['name'];
+               $hinhanh_tmp = $_FILES['anh']['tmp_name'];
 
                $sql = "INSERT INTO `baiviet`
                VALUES(NULL, '$tieude', '$tenbhat', '$matloai', '$tomtat', '$noidung','$matgia','$ngayviet','$hinhanh');";
@@ -82,7 +83,7 @@
 
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Thêm mới bài viết</h3>
-                <form action="add_article.php" method="post">
+                <form action="add_article.php" method="post" enctype="multipart/form-data">
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tiêu đề</span>
                         <input type="text" class="form-control" name="tieude" required >
@@ -106,10 +107,26 @@
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tóm tắt</span>
                         <input type="text" class="form-control" name="tomtat" required >
+                        <!-- <div type="text"id="tomtat"name="tomtat"class="form-control"></div> -->
+                        <script>
+                            ClassicEditor
+                                .create( document.querySelector( '#tomtat' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script>
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Nội dung</span>
-                        <input type="text" class="form-control" name="noidung"  >
+                        <!-- <input type="text" class="form-control" name="noidung"  > -->
+                        <div id="noidung"name="noidung" class="form-control"></div>
+                        <script>
+                            ClassicEditor
+                                .create( document.querySelector( '#noidung' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                        </script>
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>

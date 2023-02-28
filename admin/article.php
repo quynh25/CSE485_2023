@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style_login.css">
+    
+
 </head>
 <body>
     <header>
@@ -85,7 +87,7 @@
                               while($row = mysqli_fetch_assoc($result)){
                          ?>
                               <tr>
-                                   <th><?php echo $row['ma_bviet']; ?></th>
+                                   <th><?php echo $i++ ?></th>
                                    <td><?php echo $row['tieude']; ?></td>
                                    <td><?php echo $row['ten_bhat']; ?></td>
                                    <td><?php echo $row['ten_tloai']; ?></td>
@@ -95,10 +97,10 @@
                                    <td><?php echo $row['ngayviet']; ?></td>
                                    <td><img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="..."></td>
                                    <td>
-                                        <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="edit_article.php?id=<?php echo $row['ma_bviet']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                    </td>
                                    <td>
-                                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                                        <a href="delete_article.php?id=<?php echo $row['ma_bviet']?>"><i class="fa-solid fa-trash"></i></a>
                                    </td>
                               </tr>
                          <?php
