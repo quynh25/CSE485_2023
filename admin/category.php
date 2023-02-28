@@ -55,8 +55,6 @@
         die("Connection failed: " . $conn->connect_error);
         }
         // echo "Connected successfully";
-    // //Bước 2: Thực thi câu lệnh truy vấn
-    // $sql = "select * from posts order by dop asc limit 5";
         $sql = "select * from theloai";
         // $result = mysqli_query($conn, $sql);
         $result = $conn->query($sql);
@@ -84,10 +82,10 @@
                                 <td><?php echo $row['ma_tloai']?></td>
                                 <td><?php echo $row['ten_tloai']?></td>
                                 <td>
-                                    <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="edit_category.php?id=<?php echo $row['ma_tloai']; ?>" id ="btnEdit" ><i class="fa-solid fa-pen-to-square"></i></a>
                                 </td>
                                 <td>
-                                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                                    <a href="process_delete_category.php?id=<?php echo $row['ma_tloai']; ?>" id ="btnDelete" > <i class="fa-solid fa-trash"></i> </a>
                                 </td>
                             </tr>
                         <?php } ?>

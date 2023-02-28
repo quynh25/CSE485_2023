@@ -8,19 +8,19 @@
     if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
     }
-//kiểm tra khi ng dùng ADD
-    if (isset($_POST["btnAdd"])){
+
+    if (isset($_POST["btnSave"])){
         $matloai = $_POST["txtCatId"];
         $tentloai = $_POST["txtCatName"];
     }
-//truy vắn dữ liệu
-    $sql="INSERT INTO theloai VALUES ('$matloai','$tentloai')";
+
+    $sql = "UPDATE theloai SET ten_tloai = '$tentloai' WHERE ma_tloai = '$matloai'";
     if (mysqli_query($conn, $sql)){
-        
         // echo "Connected successfully";
         header('location: ../admin/category.php');
     }
     else {
-        $result = "Lỗi thêm mới" .mysqli_error($conn);
+        $result = "Cập nhật chưa thành công" .mysqli_error($conn);
     }
+    mysqli_close($conn);
     ?>

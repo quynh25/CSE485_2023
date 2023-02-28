@@ -69,15 +69,15 @@
                 <form action="process_add_category.php" method="post">
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatId">Mã tác giả</span>
-                        <input type="text" class="form-control" name="txtCatId" readonly value="<?php echo $row['ma_tgia']?>">
+                        <input type="text" class="form-control" name="txtId" readonly value="<?php echo $row['ma_tgia']?>">
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="txtCatName" value = "<?php echo $row['ten_tgia']?>">
+                        <input type="text" class="form-control" name="txtName" value = "<?php echo $row['ten_tgia']?>">
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Ảnh tác giả</span>
-                        <input type="text" class="form-control" name="txtCatName" value = "<?php html_escape($row['hinh_tgia'])?>">
+                        <input type="text" class="form-control" name="" value = "">
                     </div>
                     <div class="form-group  float-end ">
                         <input type="submit" value="Lưu lại" class="btn btn-success">

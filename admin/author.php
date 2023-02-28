@@ -88,7 +88,7 @@ $result = mysqli_query($conn,$sql);
                                         <a href="edit_author.php?id=<?php echo $row['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                     </td>
                                     <td>
-                                        <a href=""><i onclick="remove_tgia()" class="fa-solid fa-trash"></i></a>
+                                        <a href="process_delete_author.php?id<?php echo $row['ma_tgia']; ?>"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                     <?php
