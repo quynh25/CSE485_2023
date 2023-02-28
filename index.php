@@ -68,20 +68,24 @@
         <h3 class="text-center text-uppercase mb-3 text-primary">TOP bài hát yêu thích</h3>
         <div class="row">
         <?php
-        $host="localhost";
-        $username="root";
-        $password="";
-        $database="btth01_cse485";
-        $conn=mysqli_connect($host,$username,$password,$database);
-        mysqli_query($conn,"SET NAMES 'utf8'");
-        if (mysqli_connect_error()){
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }
-        $sql = "SELECT * FROM baiviet order by ma_bviet asc";
-        $result = mysqli_query($conn,$sql);
-        // Bước 03: Xử lý kết quả trả về
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
+
+
+            $host="localhost";
+            $username="root";
+            $password="";
+            $database="btth01_cse485";
+            $conn=mysqli_connect($host,$username,$password,$database);
+            mysqli_query($conn,"SET NAMES 'utf8'");
+            if (mysqli_connect_error()){
+                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
+            $sql = "SELECT * FROM baiviet ORDER BY ma_bviet ASC ";
+            $result = mysqli_query($conn,$sql);
+            // Bước 03: Xử lý kết quả trả về
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+
+
         ?>
             <div class="col-sm-3">
                 <div class="card mb-2" style="width: 100%;">
