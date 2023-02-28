@@ -18,7 +18,7 @@
     if (mysqli_query($conn, $sql)){
         
         // echo "Connected successfully";
-        header('location: http://localhost/GitHub/CSE485_2023/admin/category.php');
+        header('location: ./admin/add_category.php');
     }
     else {
         $result = "Lỗi thêm mới" .mysqli_error($conn);
