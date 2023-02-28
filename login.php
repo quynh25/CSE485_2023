@@ -1,3 +1,18 @@
+<?php     
+$server   = 'localhost'; 
+$username = 'root';         
+$password = '';              
+$db       = 'btth01_cse485';       
+global $conn;
+$conn = mysqli_connect($server,$username,$password);
+
+if(!$conn){
+     die('Không thể kết nối: '.mysql_error($conn));
+}
+mysqli_select_db($conn,$db);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +22,7 @@
     <title>Music for Life</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="./css/style_login.css">
 </head>
 <body>
     <header>
@@ -15,7 +30,7 @@
             <div class="container-fluid">
                 <div class="my-logo">
                     <a class="navbar-brand" href="#">
-                        <img src="images/logo2.png" alt="" class="img-fluid">
+                        <img src="./images/logo2.png" alt="" class="img-fluid">
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +42,7 @@
                     <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" href="./login.php">Đăng nhập</a>
+                    <a class="nav-link active" href="login.php">Đăng nhập</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -52,15 +67,32 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action = "" method = "post">
+                            <?php
+                            if($_POST){
+                                $user_name = $_POST['uname'];
+                                $pass= $_POST['password'];
+                                $result = mysqli_query($conn, "SElect * from users where tendn = '$user_name' and matkhau = '$pass'"  );
+                                $row = mysqli_fetch_assoc($result);
+ 
+                                if($row){
+                                  header("Location: ./admin/index.php");
+ 
+                                }else{
+                                  echo '<p style = "color: red">Tên đăng nhập hoặc mật khẩu không đúng!</p>';
+                                }
+                            }
+                              
+                            ?>
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="username" >
+                                <input type="text" class="form-control" name = "uname" placeholder="username" >
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
-                                <input type="text" class="form-control" placeholder="password" >
+                                <input type="text" class="form-control" name = "password" placeholder="password" >
                             </div>
                             
                             <div class="row align-items-center remember">

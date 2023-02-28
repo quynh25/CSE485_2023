@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +30,10 @@
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="category.php">Thể loại</a>
+                        <a class="nav-link" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="author.php">Tác giả</a>
+                        <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="article.php">Bài viết</a>
@@ -43,55 +44,27 @@
         </nav>
 
     </header>
-
-    <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $conn = new mysqli($servername, $username, $password,'btth01_cse485');
-
-        // Check connection
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        // echo "Connected successfully";
-        $sql = "select * from theloai";
-        // $result = mysqli_query($conn, $sql);
-        $result = $conn->query($sql);
-        
-    ?>
-
-    <main class="container mt-5 mb-5", style="background-color: antiquewhite">
+    <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_category.php" class="btn btn-success">Thêm mới</a>
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên thể loại</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        while($row = $result->fetch_assoc()){?>
-                            <tr>
-                                <td><?php echo $row['ma_tloai']?></td>
-                                <td><?php echo $row['ten_tloai']?></td>
-                                <td>
-                                    <a href="edit_category.php?id=<?php echo $row['ma_tloai']; ?>" id ="btnEdit" ><i class="fa-solid fa-pen-to-square"></i></a>
-                                </td>
-                                <td>
-                                    <a href="process_delete_category.php?id=<?php echo $row['ma_tloai']; ?>" id ="btnDelete" > <i class="fa-solid fa-trash"></i> </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                       
-                    </tbody>
-                </table>
+                <h3 class="text-center text-uppercase fw-bold">Thêm mới tác giả</h3>
+                <form action="process_add_author.php" method="post">
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tên tác giả</span>
+                        <input type="text" class="form-control" name="txtName" >
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Ảnh tác giả</span>
+                        <input type="file"name="hinh_tgia">
+                    </div>
+
+                    <div class="form-group  float-end ">
+                        <input type="submit" class="btn btn-success" name="insert" value="Thêm">
+                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
+                    </div>
+                    
+                </form>
             </div>
         </div>
     </main>

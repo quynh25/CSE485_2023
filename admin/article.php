@@ -44,12 +44,10 @@
         </nav>
 
     </header>
-    <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
-        <div class="row">
-        
-            <div class="col-sm">
-                <a href="./add_article.php" class="btn btn-success">Thêm mới</a>
+
+        <div class="card">
+            <div class="card-body">
+
                 <table class="table">
                     <thead>
                         <tr>

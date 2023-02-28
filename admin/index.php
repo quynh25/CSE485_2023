@@ -43,63 +43,88 @@
 
     </header>
     <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Người dùng</a>
-                        </h5>
+            <?php
+                $host="localhost";
+                $username="root";
+                $password="";
+                $database="btth01_cse485";
+                $conn=mysqli_connect($host,$username,$password,$database);
+                mysqli_query($conn,"SET NAMES 'utf8'");
+                if (mysqli_connect_error()){
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                }
+                $sql = "SELECT COUNT(tendn) from users";
+                $result = mysqli_query($conn,$sql);
+                $row = mysqli_fetch_assoc($result) ;
 
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
+                $sql1 = "SELECT COUNT(ma_tloai) from theloai ";
+                $result1 = mysqli_query($conn,$sql1);
+                $row1 = mysqli_fetch_assoc($result1) ;
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Thể loại</a>
-                        </h5>
+                $sql2 = "SELECT COUNT(ma_tgia) from tacgia ";
+                $result2 = mysqli_query($conn,$sql2);
+                $row2 = mysqli_fetch_assoc($result2) ;
 
-                        <h5 class="h1 text-center">
-                            10
-                        </h5>
-                    </div>
-                </div>
-            </div>
+                $sql3 = "SELECT COUNT(ma_bviet) from baiviet ";
+                $result3 = mysqli_query($conn,$sql3);
+                $row3 = mysqli_fetch_assoc($result3) ;
+                
+            ?>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Người dùng</a>
+                                    </h5>
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Tác giả</a>
-                        </h5>
+                                    <h5 class="h1 text-center">
+                                    <?php echo $row['COUNT(tendn)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Thể loại</a>
+                                    </h5>
 
-                        <h5 class="h1 text-center">
-                            20
-                        </h5>
-                    </div>
-                </div>
-            </div>
+                                    <h5 class="h1 text-center">
+                                    <?php echo $row1['COUNT(ma_tloai)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Tác giả</a>
+                                    </h5>
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Bài viết</a>
-                        </h5>
+                                    <h5 class="h1 text-center">
+                                       <?php echo $row2['COUNT(ma_tgia)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Bài Viết</a>
+                                    </h5>
 
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
+                                    <h5 class="h1 text-center">
+                                       <?php echo $row3['COUNT(ma_bviet)'];?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
         </div>
     </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
