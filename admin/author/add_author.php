@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,19 +24,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
+                        <a class="nav-link" aria-current="page" href="../index.php">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Trang ngoài</a>
+                        <a class="nav-link" href="../../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Thể loại</a>
+                        <a class="nav-link" href="../category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="article.php">Bài viết</a>
+                        <a class="nav-link" href="../article.php">Bài viết</a>
                     </li>
                 </ul>
                 </div>
@@ -42,51 +44,27 @@
         </nav>
 
     </header>
-    <?php
-        $host="localhost";
-        $username="root";
-        $password="";
-        $database="btth01_cse485";
-        $conn=mysqli_connect($host,$username,$password,$database);
-        mysqli_query($conn,"SET NAMES 'utf8'");
-        if (mysqli_connect_error()){
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }                    
-        $id = $_GET['id'];
-    ?>
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
-                <?php
-                $sql = "SELECT * FROM tacgia WHERE ma_tgia='$id'";
-                $result = mysqli_query($conn,$sql);
-
-                if(mysqli_num_rows($result)>0){
-                    $row = mysqli_fetch_assoc($result)
-                ?>
-                <form action="process_add_category.php" method="post">
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatId">Mã tác giả</span>
-                        <input type="text" class="form-control" name="txtId" readonly value="<?php echo $row['ma_tgia']?>">
-                    </div>
+                <h3 class="text-center text-uppercase fw-bold">Thêm mới tác giả</h3>
+                <form action="process_add_author.php" method="post">
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="txtName" value = "<?php echo $row['ten_tgia']?>">
+                        <input type="text" class="form-control" name="txtName" >
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Ảnh tác giả</span>
-                        <input type="text" class="form-control" name="" value = "">
+                        <input type="text" class="form-control" name="txtLink" >
                     </div>
+
                     <div class="form-group  float-end ">
-                        <input type="submit" value="Lưu lại" class="btn btn-success">
+                        <input type="submit" class="btn btn-success" name="insert" value="Thêm">
                         <a href="author.php" class="btn btn-warning ">Quay lại</a>
                     </div>
+                    
                 </form>
-                <?php
-                }
-                ?>
             </div>
         </div>
     </main>

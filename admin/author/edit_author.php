@@ -1,18 +1,19 @@
 <?php
-$host="localhost";
-$username="root";
-$password="";
-$database="btth01_cse485";
-$conn = mysqli_connect($host,$username,$password,$database);
-mysqli_query($conn,"SET NAMES 'utf8'");
-if (mysqli_connect_error()){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-$sql = "SELECT * FROM tacgia";
-$result = mysqli_query($conn,$sql);
+        $host="localhost";
+        $username="root";
+        $password="";
+        $database="btth01_cse485";
+        $conn=mysqli_connect($host,$username,$password,$database);
+        mysqli_query($conn,"SET NAMES 'utf8'");
+        if (mysqli_connect_error()){
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }                    
+        $id = $_GET['id'];
 
-
-?>
+        
+        $sql = "SELECT * FROM tacgia WHERE ma_tgia='$id'";
+        $result = mysqli_query($conn,$sql);
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,19 +39,19 @@ $result = mysqli_query($conn,$sql);
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Trang ngoài</a>
+                        <a class="nav-link" href="../../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Thể loại</a>
+                        <a class="nav-link" href="../category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="article.php">Bài viết</a>
+                        <a class="nav-link" href="../article.php">Bài viết</a>
                     </li>
                 </ul>
                 </div>
@@ -58,45 +59,38 @@ $result = mysqli_query($conn,$sql);
         </nav>
 
     </header>
+    
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên tác giả</th>
-                            <th scope="col">Ảnh tác giả</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        if(mysqli_num_rows($result)>0){
-                            while($row = mysqli_fetch_assoc($result)){
-                    ?>
-                                <tr>
-                                    <th scope="row"><?php echo $row['ma_tgia']?></th>
-                                    <td><?php echo $row['ten_tgia']?></td>
-                                    <td>
-                                        <img id="img-avt" src="<?php echo $row['hinh_tgia']?>" alt="" style="width:10%">
-                                    </td>
-                                    <td>
-                                        <a href="edit_author.php?id=<?php echo $row['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="process_delete_author.php?id<?php echo $row['ma_tgia']; ?>"><i class="fa-solid fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                    <?php
-                            }
-                        }
-                    ?>
-                    </tbody>
-                </table>
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
+                <?php
+
+                if(mysqli_num_rows($result)>0){
+                    $row = mysqli_fetch_assoc($result)
+                ?>
+                <form action="process_edit_author.php" method="post">
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã tác giả</span>
+                        <input type="text" class="form-control" name="txtId" readonly value="<?php echo $row['ma_tgia']?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tên tác giả</span>
+                        <input type="text" class="form-control" name="txtName" value = "<?php echo $row['ten_tgia']?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Ảnh tác giả</span>
+                        <input type="text" class="form-control" name="hinhanh" value = "">
+                    </div>
+                    <div class="form-group  float-end ">
+                        <input type="submit" value="Lưu lại" class="btn btn-success" name="submit">
+                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
+                    </div>
+                </form>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </main>
