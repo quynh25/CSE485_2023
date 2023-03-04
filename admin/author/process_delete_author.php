@@ -19,5 +19,5 @@
     }
     mysqli_close($conn);
     
-    header('location: ../admin/author.php');
+    header('location: ../author/author.php');
 ?>
